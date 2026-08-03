@@ -87,6 +87,7 @@ function servePublicAssets() {
 }
 
 export default defineConfig({
+  base: './',
   publicDir: false,
   build: {
     outDir: "dist/client",
