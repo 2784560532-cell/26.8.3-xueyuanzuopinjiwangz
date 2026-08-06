@@ -31,18 +31,18 @@ html[data-motion="enabled"] .detail__visual,
 html[data-motion="enabled"] .info-page__visual,
 html[data-motion="enabled"] .detail__visual-frame,
 html[data-motion="enabled"] .info-page__visual-frame,
-html[data-motion="enabled"] .detail__visual img,
+html[data-motion="enabled"] .detail__visual-image,
 html[data-motion="enabled"] .info-page__visual img,
 html[data-motion="enabled"] .detail__zcool-footer,
 html[data-motion="enabled"] .work-card,
 html[data-motion="enabled"] .work-card__media,
-html[data-motion="enabled"] .work-card__media img {
+html[data-motion="enabled"] .work-card__thumbnail {
   will-change: transform, opacity, clip-path, filter;
 }
 
 html:not([data-motion="reduced"]) .detail__visual,
 html:not([data-motion="reduced"]) .info-page__visual,
-html:not([data-motion="reduced"]) .detail__visual img,
+html:not([data-motion="reduced"]) .detail__visual-image,
 html:not([data-motion="reduced"]) .info-page__visual img,
 html:not([data-motion="reduced"]) .detail__author,
 html:not([data-motion="reduced"]) .detail__zcool-footer,
@@ -52,7 +52,7 @@ html:not([data-motion="reduced"]) .info-page__visual figcaption {
 
 html[data-motion="reduced"] .detail__visual,
 html[data-motion="reduced"] .info-page__visual,
-html[data-motion="reduced"] .detail__visual img,
+html[data-motion="reduced"] .detail__visual-image,
 html[data-motion="reduced"] .info-page__visual img,
 html[data-motion="reduced"] .detail__author,
 html[data-motion="reduced"] .detail__zcool-footer,
@@ -520,7 +520,7 @@ video {
   content: "";
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: 3;
   pointer-events: none;
   opacity: 0;
   transition:
@@ -546,13 +546,24 @@ video {
   box-shadow: inset 0 0 28px rgba(232, 255, 0, 0.1);
 }
 
-.work-card__media img {
+.work-card__thumbnail {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition:
     filter 520ms cubic-bezier(0.22, 1, 0.36, 1),
     opacity 520ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.work-card__watermark {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
 }
 
 .work-card:hover,
@@ -615,8 +626,8 @@ video {
     inset 0 -20px 34px rgba(0, 0, 0, 0.34);
 }
 
-.work-card:hover .work-card__media img,
-.work-card:has(:focus-visible) .work-card__media img {
+.work-card:hover .work-card__thumbnail,
+.work-card:has(:focus-visible) .work-card__thumbnail {
   filter: brightness(1.08) saturate(1.08) contrast(1.02);
 }
 
@@ -940,11 +951,24 @@ video {
   border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-.detail__visual img {
+.detail__visual-image {
   display: block;
   width: 100%;
   height: auto;
   object-fit: contain;
+}
+
+.detail__visual-watermark {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: block;
+  background-image: url("/assets/watermark.png");
+  background-position: center top;
+  background-repeat: repeat-y;
+  background-size: 100% auto;
+  pointer-events: none;
+  user-select: none;
 }
 
 .info-page__visual img {

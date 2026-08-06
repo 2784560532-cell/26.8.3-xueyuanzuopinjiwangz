@@ -109,7 +109,7 @@ function animatePageIntro() {
       1.18,
     )
     .fromTo(
-      ".works-section .work-card__media img",
+      ".works-section .work-card__thumbnail",
       {
         autoAlpha: 0,
         clipPath: "inset(22% 0 0 0)",
@@ -126,7 +126,7 @@ function animatePageIntro() {
         duration: 1.14,
         stagger: { amount: 0.7, from: "start" },
         ease: "power4.out",
-        onComplete: () => gsap.set(".works-section .work-card__media img", { clearProps: "clipPath" }),
+        onComplete: () => gsap.set(".works-section .work-card__thumbnail", { clearProps: "clipPath" }),
       },
       1.28,
     );
@@ -143,7 +143,7 @@ function prepareHomeWorksReturn() {
       ".works-tabs",
       ".works-section .work-card",
       ".works-section .work-card__media",
-      ".works-section .work-card__media img",
+      ".works-section .work-card__thumbnail",
     ],
     { clearProps: "all" },
   );
@@ -186,7 +186,7 @@ function prepareHomeWorksReturn() {
     scale: 1,
   });
 
-  gsap.set(".works-section .work-card__media img", {
+  gsap.set(".works-section .work-card__thumbnail", {
     autoAlpha: 1,
     clearProps: "clipPath,clip-path",
     filter: "none",
@@ -213,7 +213,7 @@ function animateContentPages() {
     y: 24,
     scaleY: 1,
   });
-  gsap.set(".works-list-page .work-card__media img", {
+  gsap.set(".works-list-page .work-card__thumbnail", {
     autoAlpha: 0,
     clipPath: "inset(26% 0 0 0)",
     filter: "blur(14px) brightness(0.76)",
@@ -239,7 +239,7 @@ function animateContentPages() {
   gsap.set(".info-page__visual-frame", {
     clipPath: "inset(100% 0 0 0)",
   });
-  gsap.set(".detail__visual img", {
+  gsap.set(".detail__visual-image", {
     autoAlpha: 1,
     clipPath: "inset(0% 0 0 0)",
     filter: "blur(12px) brightness(0.8)",
@@ -321,7 +321,7 @@ function animateContentPages() {
       duration: 1.16,
       ease: "power4.out",
     }, 0.34)
-    .to(".detail__visual img", {
+    .to(".detail__visual-image", {
       clipPath: "inset(0% 0 0 0)",
       filter: "blur(0px) brightness(1)",
       scale: 1,
@@ -387,7 +387,7 @@ function animateWorksListPage() {
   gsap.set(".works-list-page .work-card__media", {
     clipPath: "inset(100% 0 0 0)",
   });
-  gsap.set(".works-list-page .work-card__media img", {
+  gsap.set(".works-list-page .work-card__thumbnail", {
     autoAlpha: 0,
     clipPath: "inset(18% 0 0 0)",
     filter: "blur(14px) brightness(0.76)",
@@ -439,7 +439,7 @@ function animateWorksListPage() {
       duration: 1.08,
       stagger: (index) => Math.floor(index / 3) * 0.08,
     }, 0.62)
-    .to(".works-list-page .work-card__media img", {
+    .to(".works-list-page .work-card__thumbnail", {
       autoAlpha: 1,
       clipPath: "inset(0% 0 0 0)",
       filter: "blur(0px) brightness(1)",
@@ -554,7 +554,7 @@ function setupScrollReveals(pathname) {
       },
     );
 
-    const cardImages = gsap.utils.toArray(grid.querySelectorAll(".work-card__media img"));
+    const cardImages = gsap.utils.toArray(grid.querySelectorAll(".work-card__thumbnail"));
 
     gsap.fromTo(
       cardImages,
@@ -584,7 +584,7 @@ function setupScrollReveals(pathname) {
     );
   });
 
-  gsap.utils.toArray(".work-card__media img").forEach((image) => {
+  gsap.utils.toArray(".work-card__thumbnail").forEach((image) => {
     if (pathname === "/works") {
       return;
     }

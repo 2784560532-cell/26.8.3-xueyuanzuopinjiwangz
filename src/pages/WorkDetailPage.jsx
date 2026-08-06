@@ -89,7 +89,8 @@ export function WorkDetailPage() {
         <section className="detail__content">
           <figure className="detail__visual">
             <div className="detail__visual-frame">
-              <img src={work.detailImage} alt={`${work.title}详情页图片占位`} />
+              <img className="detail__visual-image" src={work.detailImage} alt={`${work.title}详情页图片占位`} />
+              <span className="detail__visual-watermark" aria-hidden="true" />
             </div>
           </figure>
 
