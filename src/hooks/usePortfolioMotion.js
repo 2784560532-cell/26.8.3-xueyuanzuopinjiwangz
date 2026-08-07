@@ -220,10 +220,16 @@ function animateContentPages() {
     yPercent: 16,
     scale: 1.12,
   });
-  gsap.set(".detail__visual", {
+  gsap.set(".detail__visual--primary", {
     autoAlpha: 1,
     y: 48,
     scale: 0.985,
+    transformOrigin: "50% 100%",
+  });
+  gsap.set(".detail__visual--stacked", {
+    autoAlpha: 0,
+    y: 64,
+    scale: 0.982,
     transformOrigin: "50% 100%",
   });
   gsap.set(".info-page__visual", {
@@ -232,14 +238,27 @@ function animateContentPages() {
     scale: 0.966,
     transformOrigin: "50% 100%",
   });
-  gsap.set(".detail__visual-frame", {
+  gsap.set(".detail__visual--primary .detail__visual-frame", {
+    clipPath: "inset(0 0 0 0)",
+    "--detail-frame-mask-y": "0%",
+  });
+  gsap.set(".detail__visual--stacked .detail__visual-frame", {
     clipPath: "inset(0 0 0 0)",
     "--detail-frame-mask-y": "0%",
   });
   gsap.set(".info-page__visual-frame", {
     clipPath: "inset(100% 0 0 0)",
   });
-  gsap.set(".detail__visual-image", {
+  gsap.set(".detail__visual--primary .detail__visual-image", {
+    autoAlpha: 1,
+    clipPath: "inset(0% 0 0 0)",
+    filter: "blur(12px) brightness(0.8)",
+    scale: 1,
+    x: 0,
+    yPercent: 0,
+    transformOrigin: "50% 0%",
+  });
+  gsap.set(".detail__visual--stacked .detail__visual-image", {
     autoAlpha: 1,
     clipPath: "inset(0% 0 0 0)",
     filter: "blur(12px) brightness(0.8)",
@@ -298,7 +317,7 @@ function animateContentPages() {
       stagger: 0.09,
       duration: 0.82,
     }, 0.58)
-    .to(".detail__visual", {
+    .to(".detail__visual--primary", {
       y: 0,
       scale: 1,
       duration: 1.18,
@@ -311,7 +330,7 @@ function animateContentPages() {
       duration: 1.16,
       ease: "power4.out",
     }, 0.34)
-    .to(".detail__visual-frame", {
+    .to(".detail__visual--primary .detail__visual-frame", {
       "--detail-frame-mask-y": "-102%",
       duration: 1.18,
       ease: "power4.out",
@@ -321,7 +340,7 @@ function animateContentPages() {
       duration: 1.16,
       ease: "power4.out",
     }, 0.34)
-    .to(".detail__visual-image", {
+    .to(".detail__visual--primary .detail__visual-image", {
       clipPath: "inset(0% 0 0 0)",
       filter: "blur(0px) brightness(1)",
       scale: 1,
@@ -605,6 +624,42 @@ function setupScrollReveals(pathname) {
         },
       },
     );
+  });
+
+  gsap.utils.toArray(".detail__visual--stacked").forEach((visual) => {
+    const frame = visual.querySelector(".detail__visual-frame");
+    const image = visual.querySelector(".detail__visual-image");
+
+    if (!frame || !image) {
+      return;
+    }
+
+    const timeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: visual,
+        start: "top 78%",
+        once: true,
+      },
+      defaults: {
+        ease: "power4.out",
+      },
+    });
+
+    timeline
+      .to(visual, {
+        autoAlpha: 1,
+        y: 0,
+        scale: 1,
+        duration: 1.08,
+      }, 0)
+      .to(frame, {
+        "--detail-frame-mask-y": "-102%",
+        duration: 1.12,
+      }, 0)
+      .to(image, {
+        filter: "blur(0px) brightness(1)",
+        duration: 1.12,
+      }, 0.04);
   });
 
 }

@@ -910,6 +910,10 @@ video {
   margin: 0;
 }
 
+.detail__visual--stacked {
+  margin-top: clamp(34px, 4.6vw, 70px);
+}
+
 .info-page__visual {
   margin: 0;
 }

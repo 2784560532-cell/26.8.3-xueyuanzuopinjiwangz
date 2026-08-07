@@ -23,6 +23,14 @@ function getValidCategoryId(value) {
   return value === "ip" || value === "ui" ? value : "";
 }
 
+function getDetailImages(work) {
+  const images = Array.isArray(work.detailImages) && work.detailImages.length
+    ? work.detailImages
+    : [work.detailImage];
+
+  return images.filter(Boolean);
+}
+
 export function WorkDetailPage() {
   const { slug } = useParams();
   const location = useLocation();
@@ -67,6 +75,8 @@ export function WorkDetailPage() {
     );
   }
 
+  const detailImages = getDetailImages(work);
+
   return (
     <main className="page page--work-detail">
       <SiteHeader />
@@ -87,12 +97,21 @@ export function WorkDetailPage() {
         </header>
 
         <section className="detail__content">
-          <figure className="detail__visual">
-            <div className="detail__visual-frame">
-              <img className="detail__visual-image" src={work.detailImage} alt={`${work.title}详情页图片占位`} />
-              <span className="detail__visual-watermark" aria-hidden="true" />
-            </div>
-          </figure>
+          {detailImages.map((image, index) => (
+            <figure
+              className={`detail__visual${index === 0 ? " detail__visual--primary" : " detail__visual--stacked"}`}
+              key={`${work.slug}-${image}`}
+            >
+              <div className="detail__visual-frame">
+                <img
+                  className="detail__visual-image"
+                  src={image}
+                  alt={detailImages.length > 1 ? `${work.title}作品图 ${index + 1}` : `${work.title}详情页图片占位`}
+                />
+                <span className="detail__visual-watermark" aria-hidden="true" />
+              </div>
+            </figure>
+          ))}
 
           <section className="detail__zcool-footer" aria-label="作品底部互动">
             <div className="detail__footer-tools">
