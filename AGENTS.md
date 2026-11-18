@@ -10,6 +10,10 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 
 ## Prototype-specific design decisions
 
+- Poetry Adventure and Alpaca Express card covers must fill the entire card with scaled artwork, without the bottom white strip or green padding band. Use `thumb-poetry-adventure-v2.png` and `thumb-alpaca-express-v2.png`; preserve the original detail images.
+
+- BurnWild cover should fill the card edge to edge; proportional scaling and a tighter crop are allowed to remove the next section's bottom white strip. Use `thumb-burnwild-fitness-v2.png`; preserve the full detail artwork.
+
 - Motion direction: use GSAP + ScrollTrigger for a high-end designer portfolio / creative agency feel. Avoid generic fade-ins and cheap bounce. Use full first-screen opening motion, masked title reveals, displacement, compressed return-to-place, staggered card reveals, image mask reveals, and subtle parallax with smooth, restrained easing.
 - Secondary-page feature images should fade in as images, not only reveal their parent frame: use delayed opacity, blur, and brightness settling after the container mask opens.
 - All content images should use a sliding fade reveal, not a static appearance: hero, work-card thumbnails, listing thumbnails, and secondary-page feature images should enter with opacity, mask, blur/brightness settling, and directional movement.
@@ -32,8 +36,8 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 - If card motion or cover cropping hides important text, adjust only that specific thumbnail with a small safe margin or versioned asset name instead of globally zooming every work card image.
 - Homepage UI thumbnails with exposed bottom edge artifacts use targeted cleaned versions: `thumb-urbanist-v5.png`, `thumb-xingyue-fitness-v5.png`, `thumb-guangfu-feiyi-v5.png`, `thumb-living-chess-v6.png`, and `thumb-travel-design-v5.png`.
 - Shengcai Cat and MetaWeave UI thumbnails use targeted cleaned crops (`thumb-shengcai-cat-v3.png`, `thumb-metaweave-v2.png`) to remove bottom white strips while preserving cover text.
-- Wannadu Planet uses the updated provided artwork as `detail-wannadu-planet-v2.png` and matching cover `thumb-wannadu-planet-v2.png`; watermark stays as the shared overlay.
-- The three Guangfu culture works are combined into one homepage entry named "广府非遗数字文化作品合集"; use Mianmian's cover and show Mianmian IP, Guangfu Feiyi, and Huanan Kunqu as stacked detail images with the shared watermark overlay.
+- Wannadu Planet uses the updated provided artwork as `detail-wannadu-planet-v2.png` and matching cover `thumb-wannadu-planet-v2.png`.
+- The three Guangfu culture works are combined into one homepage entry named "广府非遗数字文化作品合集"; use Mianmian's cover and show Mianmian IP, Guangfu Feiyi, and Huanan Kunqu as stacked detail images.
 - Homepage works section uses a sliding category module. Put the current uploaded UI batch under "UI课学员作品"; put the provided IP-course long-image works under "IP课学员作品" with the same card, hover, reveal, and detail-page behavior as the UI works.
 - Current UI-course works batch uses versioned detail images and regenerated 800x493 thumbnails from the latest provided files: `detail-urbanist-v4.png`, `detail-guangfu-mianmian-v3.png`, `detail-xingyue-fitness-v3.png`, `detail-quda-fashion-v5.png`, `detail-guangfu-feiyi-v4.png`, `detail-huanan-kunqu-v3.png`, `detail-living-chess-v4.png`, `detail-king-brand-v4.png`, `detail-travel-design-v4.png`, and `detail-music-live-v2.png`.
 - Additional UI-course works from the `7.6-新增加` batch are appended under "UI课学员作品" with generated 800x493 thumbnails and original long detail images: `detail-ecloud-device-v1.png`, `detail-shengcai-cat-v1.png`, `detail-guke-music-v1.png`, `detail-metaweave-v1.png`, `detail-blue-learning-v1.png`, `detail-play-study-camp-v1.png`, `detail-buzhai-social-v1.png`, `detail-swap-social-v1.png`, `detail-wannadu-planet-v1.png`, and `detail-on-the-road-travel-v1.png`.
@@ -43,8 +47,7 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 - King Brand detail page uses `detail-king-brand-v4.png`, copied from the provided `UI作品/新/Group 2136643336.png` long image.
 - Quda Fashion detail page uses `detail-quda-fashion-v5.png`, copied from the provided `UI作品/新/Group 2147230922.png` long image.
 - Homepage hero/header visual uses the provided `hero-video-muted.mp4` as an autoplaying muted loop, with `hero-banner.png` kept as the poster fallback.
-- All student work displays should include the provided transparent watermark from `public/assets/watermark.png`: apply it over work-card thumbnails and every work detail showcase image without baking it into original artwork files.
-- Work detail watermark density should match the cover/card density: use width-based background sizing with vertical repeat on long detail images, not a single stretched watermark image over the full artwork height.
+- All student work displays must be free of added watermark overlays, including UI/IP work-card thumbnails on the homepage and listings, and every detail showcase image (including stacked images). This replaces the earlier shared watermark requirement; keep the original artwork files unchanged.
 - Soulpaw Cat IP detail page uses `detail-soulpaw-cat-cropped.png`, a right-edge cropped version of the provided long image to remove the visible white side edge in the detail view.
 - Seed Spirit IP detail page uses `detail-seed-spirit-unified.png`, a background-extended version of the provided long image so internal sections keep a consistent visual width without right-side black gaps.
 - Homepage works category tabs should be borderless: text tabs with an acid-yellow active underline only, no surrounding container frame.
