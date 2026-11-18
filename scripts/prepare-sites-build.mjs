@@ -3,6 +3,8 @@ import { copyFileSync, existsSync, mkdirSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
+if (process.env.CF_PAGES === "1") process.exit(0);
+
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const dist = path.join(root, "dist");
 const index = path.join(dist, "client", "index.html");
