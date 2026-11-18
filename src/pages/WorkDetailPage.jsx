@@ -108,7 +108,6 @@ export function WorkDetailPage() {
                   src={image}
                   alt={detailImages.length > 1 ? `${work.title}作品图 ${index + 1}` : `${work.title}详情页图片占位`}
                 />
-                <span className="detail__visual-watermark" aria-hidden="true" />
               </div>
             </figure>
           ))}
