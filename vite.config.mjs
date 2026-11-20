@@ -6,7 +6,8 @@ import { fileURLToPath } from "node:url";
 
 const root = path.dirname(fileURLToPath(import.meta.url));
 const publicDir = path.join(root, "public");
-const outDir = path.join(root, "dist", "client");
+const isCloudflarePages = process.env.CF_PAGES === "1";
+const outDir = path.join(root, isCloudflarePages ? "dist" : "dist/client");
 
 const mimeTypes = new Map([
   [".avif", "image/avif"],
@@ -87,10 +88,10 @@ function servePublicAssets() {
 }
 
 export default defineConfig({
-  base: './',
+  base: isCloudflarePages ? "/" : "./",
   publicDir: false,
   build: {
-    outDir: "dist/client",
+    outDir,
   },
   optimizeDeps: {
     include: ["react", "react-dom/client"],
