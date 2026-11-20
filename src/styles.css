@@ -555,6 +555,18 @@ video {
     opacity 520ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+.work-card__media--uncropped {
+  aspect-ratio: auto;
+}
+
+.work-card__media--uncropped .work-card__thumbnail {
+  display: block;
+  height: auto;
+  object-fit: contain;
+  /* Preserve the whole cover through shared zoom/parallax animations. */
+  transform: none !important;
+}
+
 .work-card:hover,
 .work-card:has(:focus-visible) {
   z-index: 2;

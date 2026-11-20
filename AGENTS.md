@@ -10,7 +10,14 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 
 ## Prototype-specific design decisions
 
-- Poetry Adventure and Alpaca Express card covers must fill the entire card with scaled artwork, without the bottom white strip or green padding band. Use `thumb-poetry-adventure-v2.png` and `thumb-alpaca-express-v2.png`; preserve the original detail images.
+- Soulpaw Cat cover uses the complete supplied purple/white character poster as `thumb-soulpaw-cat-v2.png`. Preserve all edges with proportional scaling and intrinsic image height (`thumbnailFit: "contain"`); do not apply the shared thumbnail zoom/parallax transform to this cover. Keep its detail artwork unchanged.
+
+- Blitz Bunny IP uses the full original `11.19/Group 2147231109.png` as `detail-blitz-bunny-v2.png`. Its `thumb-blitz-bunny-v2.png` cover comes from the separately supplied black/pink rabbit poster, cropped proportionally to 800x493 with full-bleed coverage and no outer edges or padding. Keep the existing IP entry rather than duplicating it.
+
+- Yulao sea-fishing IP uses the supplied blue-ocean duck-float reference for its cover, with a proportional full-bleed crop that excludes screenshot guides and outer edges; use `thumb-yulao-sea-fishing-v1.png` with the original full-length `detail-yulao-sea-fishing-v1.png` artwork.
+
+- Poetry Adventure and Alpaca Express card covers must fill the entire card with scaled artwork, without the bottom white strip or green padding band. Use `thumb-poetry-adventure-v3.png` and `thumb-alpaca-express-v2.png`.
+- Poetry Adventure detail uses `detail-poetry-adventure-v2.png`, cropped from the original at x=190, y=218, width=2560, height=32509 to remove the top pale-yellow blank strip and transparent side margins. Keep the source file intact; generate its matching cover from the cleaned image and fill the card without edge bands.
 
 - BurnWild cover should fill the card edge to edge; proportional scaling and a tighter crop are allowed to remove the next section's bottom white strip. Use `thumb-burnwild-fitness-v2.png`; preserve the full detail artwork.
 
@@ -68,3 +75,4 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 - Student work detail images should fill the detail showcase width so secondary pages do not show side gutters around the work image. Avoid animation scale/translation inside an overflow-hidden frame so filling the showcase does not read as cropping.
 - Student work detail image entrance motion should not scale or translate the image itself inside an overflow-hidden frame, because that reads as cropping. Use mask, opacity, blur, and brightness settling instead.
 - Returning from a work detail page to the homepage works anchor should land directly on the works module without a top-first scroll or replaying the full homepage intro timeline.
+- MINTY ROAR uses the supplied full-length artwork as its detail image and the separately supplied blue-sky, cube-and-character image as its cover. Crop/scale that cover to fill the card edge to edge without padding or visible outer image edges; retain the character's face as the focal point.

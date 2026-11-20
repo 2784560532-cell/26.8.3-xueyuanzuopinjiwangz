@@ -11,7 +11,7 @@ export function WorkCard({ backTo, sourceCategory, work }) {
   return (
     <article className="work-card">
       <div className="work-card__surface">
-        <Link className="work-card__media" to={detailPath} state={detailState} aria-label={`查看${work.title}`}>
+        <Link className={`work-card__media${work.thumbnailFit === "contain" ? " work-card__media--uncropped" : ""}`} to={detailPath} state={detailState} aria-label={`查看${work.title}`}>
           <img className="work-card__thumbnail" src={work.thumbnail} alt={work.title} loading="lazy" />
         </Link>
         <div className="work-card__body">
