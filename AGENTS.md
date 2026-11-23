@@ -76,3 +76,6 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 - Student work detail image entrance motion should not scale or translate the image itself inside an overflow-hidden frame, because that reads as cropping. Use mask, opacity, blur, and brightness settling instead.
 - Returning from a work detail page to the homepage works anchor should land directly on the works module without a top-first scroll or replaying the full homepage intro timeline.
 - MINTY ROAR uses the supplied full-length artwork as its detail image and the separately supplied blue-sky, cube-and-character image as its cover. Crop/scale that cover to fill the card edge to edge without padding or visible outer image edges; retain the character's face as the focal point.
+- Giraffe / 鹿高高 is one IP work placed immediately before Tomato Bear. Show the supplied `642.png` then `643.png` as two ordered detail images, and use the separate carousel scene as its cover.
+
+- KOWBOY coffee IP is one work immediately before Tomato Bear: use the supplied blue-sky cow cover and show detail-kowboy-coffee-01-v1.png then detail-kowboy-coffee-02-v1.png in order.
