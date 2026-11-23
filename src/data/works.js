@@ -366,6 +366,21 @@ export const ipWorks = [
     description: "围绕薄荷小怪兽角色，展示三视图、品牌标志、配色、动作表情、冒险主题海报、钥匙扣、毛绒玩偶与盲盒模型设计。",
   },
   {
+    slug: "kowboy-coffee-ip",
+    title: "咖牛仔 KOWBOY-IP设计",
+    summary: "咖啡牛仔角色、品牌视觉与咖啡周边设计",
+    category: "IP Design",
+    thumbnail: "/assets/students/thumb-kowboy-coffee-v1.png",
+    detailImage: "/assets/students/detail-kowboy-coffee-01-v1.png",
+    detailImages: [
+      "/assets/students/detail-kowboy-coffee-01-v1.png",
+      "/assets/students/detail-kowboy-coffee-02-v1.png",
+    ],
+    video: "",
+    author: "IP课学员作品",
+    description: "围绕咖牛仔 KOWBOY 角色，展示品牌标志、色彩规范、角色动作、咖啡主题场景、钥匙扣、手办与包装物料设计。",
+  },
+  {
     slug: "tomato-bear-ip",
     title: "番茄小熊-IP设计",
     summary: "番茄红与春芽绿打造的趣味萌系角色长图",
